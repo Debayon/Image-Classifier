@@ -7,6 +7,8 @@ import pandas as pd
 import torch
 import torch.utils.data as utils
 import torch.nn as nn
+from torchsummary import summary
+	
 
 ## Get the list of all images 
 files = os.listdir("dataset/val/cats")
@@ -160,6 +162,8 @@ model = SimpleCNN()
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 model.to(device)
+
+summary(model, (3, 256, 256))
 
 criterion = nn.CrossEntropyLoss()
 
